@@ -73,9 +73,9 @@ describe('MaxHeap', () => {
 				h.insertNode(node);
 			});
 
-			expect(h.root).to.equal(nodes[0]);
-			expect(h.root.left).to.equal(nodes[1]);
-			expect(h.root.right).to.equal(nodes[2]);
+      expect(h.root).to.equal(nodes[0]);
+      expect(h.root.left).to.equal(nodes[1]);
+      expect(h.root.right).to.equal(nodes[2]);
 			expect(h.root.left.left).to.equal(nodes[3]);
 			expect(h.root.left.right).to.equal(nodes[4]);
 		});
@@ -154,7 +154,7 @@ describe('MaxHeap', () => {
 
 		it('shifts node up until heap property is valid', () => {
 			const newRoot = h.root.left.left;
-			h.shiftNodeUp(h.root.left.left);
+      h.shiftNodeUp(h.root.left.left);
 			expect(h.root).to.equal(newRoot);
 		});
 
@@ -199,7 +199,7 @@ describe('MaxHeap', () => {
 			const h = new MaxHeap();
 			h.push(0, 0);
 			h.push(15, 2);
-			h.push(42, 13);
+      h.push(42, 13);
 
 			h.clear();
 
@@ -410,21 +410,21 @@ describe('MaxHeap', () => {
 			expect(h.parentNodes[2]).to.equal(correctParentNodesOrderAfterShiftUp[2]);
 		});
 
-        it('shifts node down in right direction', () => {
-            h = new MaxHeap();
+    it('shifts node down in right direction', () => {
+      h = new MaxHeap();
 
-            let newRoot = new Node(20, 20);
-            let newDeepest = new Node(1, 1);
+      let newRoot = new Node(20, 20);
+      let newDeepest = new Node(1, 1);
 
-            h.root = newDeepest;
-            h.root.appendChild(new Node(10, 10));
-            h.root.appendChild(newRoot);
-            h.root.left.appendChild(new Node(5, 5));
-            h.root.left.appendChild(new Node(8, 8));
-            h.root.right.appendChild(new Node(11, 11));
-            h.root.right.appendChild(new Node(6, 6));
+      h.root = newDeepest;
+      h.root.appendChild(new Node(10, 10));
+      h.root.appendChild(newRoot);
+      h.root.left.appendChild(new Node(5, 5));
+      h.root.left.appendChild(new Node(8, 8));
+      h.root.right.appendChild(new Node(11, 11));
+      h.root.right.appendChild(new Node(6, 6));
 
-            h.parentNodes = [h.root.left.left, h.root.left.right, h.root.right.left, h.root.right.right];
+      h.parentNodes = [h.root.left.left, h.root.left.right, h.root.right.left, h.root.right.right];
 
 /**
             1                             20
@@ -434,12 +434,12 @@ describe('MaxHeap', () => {
      5    8 11  6                   5   8 1   6
  **/
 
-            h.shiftNodeDown(h.root);
+      h.shiftNodeDown(h.root);
 
-            expect(h.root).to.equal(newRoot);
-            expect(h.root.right.left).to.equal(newDeepest);
-            expect(h.parentNodes.map(n=>n.priority)).to.deep.equal([5,8,1,6]);
-        });
+      expect(h.root).to.equal(newRoot);
+      expect(h.root.right.left).to.equal(newDeepest);
+      expect(h.parentNodes.map(n=>n.priority)).to.deep.equal([5,8,1,6]);
+    });
 
 		it('calls Node.swapWithParent', () => {
 			const firstNodeToSwapWith = h.root.left;
